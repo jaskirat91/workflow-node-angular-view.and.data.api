@@ -31,8 +31,8 @@ angular.module('Autodesk.ADN.Toolkit.Viewer.Directive.Viewer', [])
                 new Autodesk.ADN.Toolkit.Viewer.AdnViewerFactory(
                     $attributes.url,
                     ($attributes.hasOwnProperty('config') ?
-                        $attributes.config :
-                        {}));
+                        JSON.parse($attributes.config) :
+                        {}));       
 
             $attributes.$observe('urn', function(urn) {
 
@@ -40,10 +40,10 @@ angular.module('Autodesk.ADN.Toolkit.Viewer.Directive.Viewer', [])
 
                     $scope.viewerFactory.getViewablePath(
                         urn,
-                        function (pathCollection) {
+                        function (pathInfoCollection) {
 
                             $scope.onViewablePath({
-                                pathCollection: pathCollection
+                                pathInfoCollection: pathInfoCollection
                             });
                         },
                         function (error) {

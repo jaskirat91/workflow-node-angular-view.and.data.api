@@ -88,21 +88,25 @@ angular.module('Autodesk.ADN.AngularView.View.Viewer',
                     });
                 }
 
-                $scope.onViewablePath= function(pathCollection) {
+                $scope.onViewablePath= function(pathInfoCollection) {
 
                     $scope.$broadcast('viewer.viewable-path-loaded', {
-                        pathCollection: pathCollection
+                        pathInfoCollection: pathInfoCollection
                     });
 
-                    if(pathCollection.path3d.length > 0) {
+                    if(pathInfoCollection.path3d.length > 0) {
 
-                        $scope.selectedPath.push(pathCollection.path3d[0]);
+                        $scope.selectedPath.push(
+                            pathInfoCollection.path3d[0].path);
+
                         return;
                     }
 
-                    if(pathCollection.path2d.length > 0) {
+                    if(pathInfoCollection.path2d.length > 0) {
 
-                        $scope.selectedPath.push(pathCollection.path2d[0]);
+                        $scope.selectedPath.push(
+                            pathInfoCollection.path2d[0].path);
+
                         return;
                     }
                 }
@@ -162,7 +166,7 @@ angular.module('Autodesk.ADN.AngularView.View.Viewer',
 
                             break;
 
-                        case 'VIEWER_LAYOUT_MODE_COLUMN':
+                        case 'VIEWER_LAYOUT_MODE_COLUMN_FITTED':
 
                             $scope.viewerConfig.height = height + 'px';
 

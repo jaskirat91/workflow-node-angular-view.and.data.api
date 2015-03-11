@@ -52,8 +52,8 @@ angular.module('Autodesk.ADN.AngularView.Navbar.ViewerNavbar',
                 label: $sce.trustAsHtml('Layout Mode: Row')
             },
             {
-                value: 'VIEWER_LAYOUT_MODE_COLUMN',
-                label: $sce.trustAsHtml('Layout Mode: Column')
+                value: 'VIEWER_LAYOUT_MODE_COLUMN_FITTED',
+                label: $sce.trustAsHtml('Layout Mode: Column - Fitted')
             }];
 
             $scope.selectedLayoutMode = $scope.modes[0].value;
@@ -86,31 +86,22 @@ angular.module('Autodesk.ADN.AngularView.Navbar.ViewerNavbar',
             ///////////////////////////////////////////////////////////////////
             $scope.$on('viewer.viewable-path-loaded', function (event, data) {
 
-                var idx2d = 1;
-
-                data.pathCollection.path2d.forEach(function(path2d) {
+                data.pathInfoCollection.path2d.forEach(function(path2d) {
 
                     $scope.items.push({
-                        value: path2d,
-                        label: $sce.trustAsHtml('Path 2d : ' + idx2d++)
+                        value: path2d.path,
+                        label: $sce.trustAsHtml(path2d.name)
                     });
                 });
 
-                var idx3d = 1;
-
-                data.pathCollection.path3d.forEach(function(path3d) {
+                data.pathInfoCollection.path3d.forEach(function(path3d) {
 
                     $scope.items.push({
-                        value: path3d,
-                        label: $sce.trustAsHtml('Path 3d : ' + idx3d++)
+                        value: path3d.path,
+                        label: $sce.trustAsHtml(path3d.name)
                     });
                 });
             });
-
-            ///////////////////////////////////////////////////////////////////
-            //
-            //
-            ///////////////////////////////////////////////////////////////////
     });
 
 
