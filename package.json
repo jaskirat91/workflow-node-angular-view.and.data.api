@@ -1,0 +1,11 @@
+{
+  "name": "AdnAngularView",
+
+    "version": "0.0.0",
+
+  "dependencies": {
+    "express": "*",
+    "request": "*",
+    "serve-favicon": "*"
+  }
+}

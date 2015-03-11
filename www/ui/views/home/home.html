@@ -1,0 +1,53 @@
+<div style="height:50px">
+</div>
+
+<div class="container" style="background-color: #C9DBF7; border-radius: 15px;">
+
+    <!-- Page Heading -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Gallery
+                <small>3D Models</small>
+            </h1>
+        </div>
+    </div>
+    <!-- /.row -->
+
+    <!-- model -->
+    <div ng-repeat="item in items | orderBy:'name'">
+        <div class="row">
+            <div class="col-md-3">
+                <img class="img-responsive"
+                     ng-src={{item.thumbnail}}
+                     alt=""
+                     style="border: 1px solid; border-radius: 15px;">
+            </div>
+            <div class="col-md-5">
+                <h3>{{item.name}}</h3>
+                <h4>{{item.subheading}}</h4>
+                <p>{{item.description}}</p>
+                <a class="btn btn-primary" href="#/viewer?id={{item.id}}">
+                    Show in viewer
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+            </div>
+        </div>
+        <hr class="home-separator">
+    </div>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <p>Autodesk Developer Network &copy; 2015</p>
+            </div>
+        </div>
+
+    </footer>
+
+</div>
+
+<div style="height:50px">
+</div>

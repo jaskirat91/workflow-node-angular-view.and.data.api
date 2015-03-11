@@ -1,0 +1,49 @@
+
+<div ui-layout options="{ flow:'row', dividerSize: 8}" style="top:50px; bottom:0px">
+
+    <div ui-layout-container>
+        <div ui-layout="{flow : 'column', dividerSize: 8}" >
+
+            <div ui-layout-container size="30%" style="background-color: #DBDBDB">
+
+                <div ng-include="'ui/controls/treeview/treeview.html'"
+                     id="viewer-treeview"
+                     style="height: 50px;">
+
+                </div>
+
+            </div>
+
+            <div ui-layout-container size="70%" id="viewer-container">
+
+                <div ng-include="'ui/navbars/viewer-navbar/viewer-navbar.html'"
+                     id="viewer-navbar"
+                     style="height: 50px;">
+                </div>
+
+                <adn-viewer-container style="width:100%; height: 100%;"
+                    url="{{tokenUrl}}"
+                    urn="{{docUrn}}"
+                    config="{{viewerContainerConfig}}"
+                    on-viewable-path="onViewablePath(pathCollection)">
+
+                    <div ng-repeat= "path in selectedPath" style="width:100%; height: 100%;">
+
+                        <adn-viewer
+                            ng-style="{'width':viewerConfig.width, 'height': viewerConfig.height, 'float': 'left'}"
+                            path="{{path}}"
+                            config="{{viewerConfig}}"
+                            on-viewer-initialized="onViewerInitialized(viewer)">
+                        </adn-viewer>
+
+                        <div ng-hide="$last" ng-style="{'width':viewerConfig.splitterWidth, 'height': viewerConfig.splitterHeight, 'float': 'left', 'background-color': '#979090'}">
+                        </div>
+
+                    </div>
+
+                </adn-viewer-container>
+
+            </div>
+        </div>
+    </div>
+</div>
